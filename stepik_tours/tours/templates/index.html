@@ -1,20 +1,8 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>CSSDesk</title>
-    <style type="text/css">
-      
-      body { background-color: #fff; }
-      
-      
-    </style>
-  </head>
-  <body>
-    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ title }}</title>
+    {% block name %}<title>{{ title }}</title>{% endblock %}}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -22,24 +10,27 @@
 <div class="container mt-3">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" data-test="logo" href="#">{{ title }}</a>
+      <a class="navbar-brand" data-test="logo" href="/">{{ title }}</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav" data-test="navigation">
-            {% for departure in departures %}
+            {% for key, departure in departures.items %}
           <li class="nav-item active">
-            <a class="nav-link" href="#" data-test="navlink">{{ departure }}</a>
+            <a class="nav-link" href="http://localhost:8000/departure/{{ key }}" data-test="navlink">{{ departure }}</a>
           </li>
             {% endfor %}
         </ul>
       </div>
     </nav>
+</div>
 
     <!-- HERO -->
+<div class="container">
+    {% block container %}
 
-    <div class="jumbotron text-center mt-4">
+     <div class="jumbotron text-center mt-4">
       <h1 class="display-4">Всякие туры</h1>
       <p class="lead">{{ subtitle }}</p>
       <p class="mt-5 w-50 mx-auto">{{ description }}</p>
@@ -48,77 +39,26 @@
     <!-- CARDS -->
 
     <div class="row mt-5" data-test="cards">
-        {% for tour in tours.values %}
+        {% for tour in tours_list %}
         <div class="col-4" data-test="card">
             <div class="card mb-3" >
             <img src={{ tour.picture }} class="card-img-top img-fluid" data-test="picture">
             <div class="card-body">
-              <h5 class="card-title">Hotel title</h5>
-             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title">{{ tour.title }}</h5>
+             <p class="card-text">{{ tour.description }}</p>
                 <a href="" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
             </div>
         </div>
         </div>
+        {% endfor %}
 
-        <div class="col-4" data-test="card">
-            <div class="card mb-3" >
-            <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" data-test="picture">
-            <div class="card-body">
-              <h5 class="card-title">Hotel title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
-            </div>
-        </div>
-        </div>
-
-        <div class="col-4" data-test="card">
-            <div class="card mb-3" >
-            <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" data-test="picture">
-            <div class="card-body">
-             <h5 class="card-title">Hotel title</h5>
-             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-             <a href="" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
-            </div>
-        </div>
-        </div>
-
-        <div class="col-4" data-test="card">
-            <div class="card mb-3" >
-            <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" data-test="picture">
-            <div class="card-body">
-              <h5 class="card-title">Hotel title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
-            </div>
-        </div>
-        </div>
-
-        <div class="col-4" data-test="card">
-            <div class="card mb-3" >
-            <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" data-test="picture">
-            <div class="card-body">
-              <h5 class="card-title">Hotel title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="" class="btn btn-sm btn-primary" data-test="tourlink">Подробнее</a>
-            </div>
-        </div>
-        </div>
-
-        <div class="col-4" data-test="card">
-            <div class="card mb-3" >
-            <img src="https://place-hold.it/300x200" class="card-img-top img-fluid" data-test="picture">
-            <div class="card-body">
-              <h5 class="card-title">Hotel title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="" class="btn btn-sm btn-primary"  data-test="tourlink">Подробнее</a>
-            </div>
-        </div>
-        </div>
     </div>
 
+    {% endblock %}
 </div>
 
+
+
+
 </body>
-</html>
-  </body>
 </html>
