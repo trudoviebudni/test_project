@@ -1,37 +1,10 @@
-#from django.shortcuts import render
-from django.http import HttpResponseNotFound
-from django.views import View
-from django.shortcuts import render
+title = "Stepik Travel"
+subtitle = "Для тех, кого отвлекают дома"
+description = "Лучшие направления, где никто не будет вам мешать сидеть на берегу и изучать программирование, дизайн, разработку игр и управление продуктами"
+departures = {"msk": "Из Москвы", "spb": "Из Петербурга", "nsk": "Из Новосибирска", "ekb": "Из Екатеринбурга",
+              "kazan": "Из Казани"}
 
-"""
-представления через функции
-def mainView(request):
-    return render(request, 'index.html')
-
-
-def departureView(request, departure='novosib'):
-    return render(request, 'departure.html')
-
-
-def tourView(request, id=0):
-    return render(request, 'tour.html')
-
-
-
-
-class MainView(TemplateView):
-    template_name = 'index.html'
-
-
-class DepartureView(TemplateView):
-    template_name = 'tours/departure.html'
-
-
-class TourView(TemplateView):
-    template_name = 'tours/tour.html'
-"""
-
-data = [
+tours = [
      {
         "title": "Marina Lake Hotel & Spa",
         "description": "Отель выглядит уютно. Он был построен из красного соснового дерева и украшен синими камнями.  Высокие округлые окна добавляют общий стиль дома и были добавлены в дом в довольно симметричном образце.",
@@ -210,16 +183,3 @@ data = [
     }
 
 ]
-
-def custom_handler404(request, exception):
-    return HttpResponseNotFound('Ой, что то сломалось... Простите извините!')
-
-class MainView(View):
-    def get(self, request, *args, **kwargs):
-        render(request, 'index.html', {})
-
-
-class TestView(View):
-    def get(self, request, *args, **kwargs):
-        render(request, 'test.html', {})
-
