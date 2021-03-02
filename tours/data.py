@@ -464,7 +464,7 @@ tours_list = [
         "stars": "3",
         "country": "Куба",
         "nights": 8,
-        "date": "26 января"
+        "date": "26 января",
         'id': 13,
     },
     {
