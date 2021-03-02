@@ -4,37 +4,9 @@ from tours.data import *
 from django.views import View
 from django.shortcuts import render
 import re
-from django.views.generic import ListView
 
 
 
-"""
-представления через функции
-def mainView(request):
-    return render(request, 'index.html')
-
-
-def departureView(request, departure='novosib'):
-    return render(request, 'departure.html')
-
-
-def tourView(request, id=0):
-    return render(request, 'tour.html')
-
-
-
-
-class MainView(TemplateView):
-    template_name = 'index.html'
-
-
-class DepartureView(TemplateView):
-    template_name = 'tours/departure.html'
-
-
-class TourView(TemplateView):
-    template_name = 'tours/tour.html'
-"""
 
 
 
