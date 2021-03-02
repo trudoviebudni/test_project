@@ -26,7 +26,7 @@ SECRET_KEY = 'hv=fp(wlf9w*4-pt3!18_3l)0!8^d*abzxuq)d4_a#q(1^@m#!'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'http://ngikita-tours.herokuapp.com'
+    '*'
 ]
 
 
