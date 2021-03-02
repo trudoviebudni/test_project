@@ -1,11 +1,7 @@
 from django.http import HttpResponseNotFound
-from django.views.generic import TemplateView
 from tours.data import *
 from django.views import View
 from django.shortcuts import render
-import re
-
-
 
 
 
@@ -29,8 +25,7 @@ class MainView(View):
 class TourView(View):
 
     def get(self, request, *args, **kwargs):
-        x = re.findall(r'(?:.+/tour/)(\d+)', request.build_absolute_uri())[0]
-        x = int(x)
+        x = kwargs['id']
         context = {}
         context['tour'] = tours[x]
         context['departure'] = departures[tours[x]['departure']]
@@ -45,9 +40,7 @@ class TourView(View):
 class DepartureView(View):
 
     def get(self, request, *args, **kwargs):
-        #x = re.findall(r"(?:.+/departure/)(\w+)", request.build_absolute_uri())[0]
         context = {}
-        #context['departure'] = departures[x]
         context['departure'] = departures[kwargs['departure']]
         context['tours_list'] = tours_list
         context['title'] = title
