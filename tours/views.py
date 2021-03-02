@@ -1,40 +1,8 @@
 from django.http import HttpResponseNotFound
-from django.views.generic import TemplateView
 from tours.data import *
 from django.views import View
 from django.shortcuts import render
-import re
-from django.views.generic import ListView
 
-
-
-"""
-представления через функции
-def mainView(request):
-    return render(request, 'index.html')
-
-
-def departureView(request, departure='novosib'):
-    return render(request, 'departure.html')
-
-
-def tourView(request, id=0):
-    return render(request, 'tour.html')
-
-
-
-
-class MainView(TemplateView):
-    template_name = 'index.html'
-
-
-class DepartureView(TemplateView):
-    template_name = 'tours/departure.html'
-
-
-class TourView(TemplateView):
-    template_name = 'tours/tour.html'
-"""
 
 
 
@@ -72,9 +40,7 @@ class TourView(View):
 class DepartureView(View):
 
     def get(self, request, *args, **kwargs):
-        #x = re.findall(r"(?:.+/departure/)(\w+)", request.build_absolute_uri())[0]
         context = {}
-        #context['departure'] = departures[x]
         context['departure'] = departures[kwargs['departure']]
         context['tours_list'] = tours_list
         context['title'] = title
