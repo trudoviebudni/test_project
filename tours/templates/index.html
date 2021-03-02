@@ -18,7 +18,7 @@
         <ul class="navbar-nav" data-test="navigation">
             {% for key, departure in departures.items %}
           <li class="nav-item active">
-            <a class="nav-link" href="http://localhost:8000/departure/{{ key }}" data-test="navlink">{{ departure }}</a>
+            <a class="nav-link" href="/departure/{{ key }}" data-test="navlink">{{ departure }}</a>
           </li>
             {% endfor %}
         </ul>
